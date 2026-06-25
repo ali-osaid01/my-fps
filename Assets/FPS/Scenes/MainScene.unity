@@ -3185,8 +3185,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 814417836257332542, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
+      propertyPath: JumpForce
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 814417836257332542, guid: 761cdc9e4e883334cbdcea062d0befa7,
+        type: 3}
       propertyPath: gravityDownForce
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 814417836257332542, guid: 761cdc9e4e883334cbdcea062d0befa7,
+        type: 3}
+      propertyPath: MaxSpeedCrouchedRatio
+      value: 0.467
       objectReference: {fileID: 0}
     - target: {fileID: 2286125971047457827, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
@@ -5324,6 +5334,100 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf40d5ff22aca9d428655f63d45754f5, type: 3}
+--- !u!1 &9001000000000000000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9001000000000000001}
+  - component: {fileID: 9001000000000000002}
+  - component: {fileID: 9001000000000000003}
+  m_Layer: 0
+  m_Name: DifficultyLevelController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9001000000000000001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9001000000000000000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9001000000000000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9001000000000000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441c5754f02945d1ac5a4af56069c885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoverbotPrefab: {fileID: 2015434656898269652, guid: 25a1b0efadb966e44889fce712c8ff8d, type: 3}
+  TurretPrefab: {fileID: 2015434656898269652, guid: e29d43f43cc5d82499dd9926e01847d3, type: 3}
+  HealthPickupPrefab: {fileID: 2620131183356007192, guid: d40ae884302b6684a8b3b6f3d55a71ba, type: 3}
+  DecorationPrefabs:
+  - {fileID: 100000, guid: 6b2dfb46096eb400e8d5de95609e53b3, type: 3}
+  - {fileID: 100000, guid: 738cfb63efae84af7b2446470711e751, type: 3}
+  - {fileID: 100000, guid: 1b5c4d63f30c047a6b5e593599a27c13, type: 3}
+  - {fileID: 100000, guid: b698994a5dd674ee3997e51d3474a09f, type: 3}
+  - {fileID: 802008062828970544, guid: 04df6363b21362a46bcfbb6b371a8671, type: 3}
+  DecorationMaterials:
+  - {fileID: 2100000, guid: 720149e63952b457590122b90ee86b07, type: 2}
+  - {fileID: 2100000, guid: 0030b1f081f074ea79e4c8398f97fc08, type: 2}
+  SpawnNeonLights: 1
+  DifficultySetups:
+  - Difficulty: 0
+    Root: {fileID: 0}
+    HoverbotCount: 3
+    TurretCount: 1
+    HealthPickupCount: 4
+    EnemyHealthMultiplier: 0.9
+    EnemyFireIntervalMultiplier: 1.15
+  - Difficulty: 1
+    Root: {fileID: 0}
+    HoverbotCount: 6
+    TurretCount: 3
+    HealthPickupCount: 2
+    EnemyHealthMultiplier: 1
+    EnemyFireIntervalMultiplier: 1
+  - Difficulty: 2
+    Root: {fileID: 0}
+    HoverbotCount: 9
+    TurretCount: 4
+    HealthPickupCount: 1
+    EnemyHealthMultiplier: 1.2
+    EnemyFireIntervalMultiplier: 0.85
+--- !u!114 &9001000000000000003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9001000000000000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b7641f262348789e8fc1580d2d744d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuildOnAwake: 1
+  ReplaceOriginalLevelGeometry: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5349,3 +5453,4 @@ SceneRoots:
   - {fileID: 2729281214225025847}
   - {fileID: 9217268748774167426}
   - {fileID: 2729281214382627287}
+  - {fileID: 9001000000000000001}

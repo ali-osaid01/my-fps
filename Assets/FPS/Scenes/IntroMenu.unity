@@ -481,6 +481,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: MainScene
+  SetDifficultyBeforeLoading: 0
+  Difficulty: 1
+  BuildDifficultyButtons: 1
 --- !u!1 &160263376
 GameObject:
   m_ObjectHideFlags: 0

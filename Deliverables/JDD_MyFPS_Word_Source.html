@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JDD - My FPS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      color: #1f2933;
+      line-height: 1.45;
+    }
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+    h2 {
+      color: #0b4f6c;
+      font-size: 18px;
+      border-bottom: 1px solid #b8c7d1;
+      padding-bottom: 4px;
+      margin-top: 22px;
+    }
+    h3 {
+      color: #111827;
+      font-size: 15px;
+      margin-top: 16px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 10px 0 16px;
+    }
+    th, td {
+      border: 1px solid #9fb0bd;
+      padding: 7px;
+      vertical-align: top;
+    }
+    th {
+      background: #e8f3f8;
+      font-weight: bold;
+    }
+    .subtitle {
+      text-align: center;
+      color: #4b5563;
+      margin-bottom: 26px;
+    }
+    .meta {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>JDD - My FPS</h1>
+  <p class="subtitle">Game Design Document</p>
+
+  <table class="meta">
+    <tr><th>Field</th><th>Details</th></tr>
+    <tr><td>Game Title</td><td>My FPS</td></tr>
+    <tr><td>Genre</td><td>First-person shooter</td></tr>
+    <tr><td>Engine</td><td>Unity 6000.5.0f1</td></tr>
+    <tr><td>Target Platform</td><td>Windows PC</td></tr>
+    <tr><td>Build Name</td><td>MyFPS.exe</td></tr>
+    <tr><td>Project Base</td><td>Unity FPS Microgame modified with custom difficulty, arena visuals, enemy balancing, and menu styling.</td></tr>
+  </table>
+
+  <h2>1. Game Concept</h2>
+  <p>My FPS is a compact first-person shooter where the player enters a neon cyberpunk arena and must eliminate all enemies to win. The gameplay keeps the original FPS shooting, movement, health, pickups, enemy detection, and objective mechanics, while the presentation and difficulty structure have been redesigned.</p>
+  <p>The player chooses Easy, Medium, or Hard from the menu before entering the arena. Each difficulty changes enemy count, turret count, health pickups, enemy health, and fire-rate pressure.</p>
+
+  <h2>2. Target Audience</h2>
+  <p>The game is designed for students and casual FPS players who understand basic keyboard and mouse controls. It is short, clear, and arcade-like, making it suitable for a class demo or small project submission.</p>
+
+  <h2>3. Core Gameplay Loop</h2>
+  <ol>
+    <li>Start from the menu.</li>
+    <li>Select a difficulty level.</li>
+    <li>Spawn into the cyberpunk arena.</li>
+    <li>Move through the arena, collect health pickups, and fight enemies.</li>
+    <li>Destroy all enemies to complete the objective.</li>
+    <li>Reach the win screen or lose if the player dies.</li>
+  </ol>
+
+  <h2>4. Player Controls</h2>
+  <table>
+    <tr><th>Action</th><th>Input</th></tr>
+    <tr><td>Movement</td><td>WASD or arrow keys</td></tr>
+    <tr><td>Look</td><td>Mouse</td></tr>
+    <tr><td>Fire</td><td>Left mouse button</td></tr>
+    <tr><td>Jump</td><td>Space</td></tr>
+    <tr><td>Sprint</td><td>Left Shift</td></tr>
+    <tr><td>Crouch</td><td>C</td></tr>
+    <tr><td>Weapon Select</td><td>Number keys</td></tr>
+    <tr><td>Pause/Menu</td><td>Escape</td></tr>
+  </table>
+
+  <h2>5. Objective</h2>
+  <p>The main objective is to eliminate all active enemies in the arena. The objective counter updates during gameplay and shows how many enemies have been defeated out of the total required amount.</p>
+
+  <h2>6. Difficulty Design</h2>
+  <table>
+    <tr>
+      <th>Difficulty</th>
+      <th>Hoverbots</th>
+      <th>Turrets</th>
+      <th>Total Enemies</th>
+      <th>Health Pickups</th>
+      <th>Enemy Tuning</th>
+      <th>Purpose</th>
+    </tr>
+    <tr>
+      <td>Easy</td>
+      <td>3</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+      <td>Health x0.9, fire interval x1.15</td>
+      <td>Best for first-time players. Fewer enemies and more healing.</td>
+    </tr>
+    <tr>
+      <td>Medium</td>
+      <td>6</td>
+      <td>3</td>
+      <td>9</td>
+      <td>2</td>
+      <td>Health x1.0, fire interval x1.0</td>
+      <td>Balanced default challenge.</td>
+    </tr>
+    <tr>
+      <td>Hard</td>
+      <td>9</td>
+      <td>4</td>
+      <td>13</td>
+      <td>1</td>
+      <td>Health x1.2, fire interval x0.85</td>
+      <td>Highest pressure with more enemies, less healing, stronger enemies, and faster enemy attacks.</td>
+    </tr>
+  </table>
+
+  <h2>7. Enemies</h2>
+  <h3>Hoverbot</h3>
+  <ul>
+    <li>Mobile enemy type.</li>
+    <li>Moves through the arena and attacks the player.</li>
+    <li>Used in all difficulty levels.</li>
+  </ul>
+
+  <h3>Turret</h3>
+  <ul>
+    <li>Heavy stationary enemy type.</li>
+    <li>Scaled larger to look like a stronger enemy.</li>
+    <li>Uses aiming and shooting behavior.</li>
+    <li>Runtime height pinning prevents the turret from being pulled below the redesigned arena floor by old navigation data.</li>
+  </ul>
+
+  <h2>8. Pickups</h2>
+  <p>Health pickups are placed in the arena to help the player survive. The number of pickups depends on difficulty, so harder modes give the player fewer recovery opportunities.</p>
+
+  <h2>9. Level and Atmosphere</h2>
+  <p>The arena has been visually rebuilt into a brighter cyberpunk combat space. The old level geometry is replaced at runtime with:</p>
+  <ul>
+    <li>Dark sci-fi floor panels</li>
+    <li>Neon cyan and magenta guide lines</li>
+    <li>North, south, east, and west arena walls</li>
+    <li>Ceiling beams</li>
+    <li>Raised platforms</li>
+    <li>Cover blocks</li>
+    <li>Holographic billboard-style props</li>
+    <li>Colored point lights</li>
+    <li>Fog and ambient lighting</li>
+  </ul>
+  <p>The goal of the new atmosphere is to make the game feel more modern, readable, and interesting while keeping the original FPS mechanics stable.</p>
+
+  <h2>10. User Interface</h2>
+  <p>The menu includes styled difficulty buttons for Easy, Medium, and Hard. The visual style uses darker button backgrounds, bright accent colors, outlines, and shadows to better match the neon arena theme.</p>
+  <p>The in-game UI keeps the original FPS information structure: objective text, health, weapon/ammo feedback, and game result screens.</p>
+
+  <h2>11. Technical Implementation</h2>
+  <table>
+    <tr><th>Script</th><th>Purpose</th></tr>
+    <tr><td>DifficultySettings.cs</td><td>Saves and loads the selected difficulty.</td></tr>
+    <tr><td>LoadSceneButton.cs</td><td>Builds the difficulty selection menu and loads the selected scene.</td></tr>
+    <tr><td>DifficultyLevelController.cs</td><td>Spawns enemies and pickups based on difficulty.</td></tr>
+    <tr><td>CyberpunkArenaBuilder.cs</td><td>Rebuilds the level atmosphere and geometry at runtime.</td></tr>
+    <tr><td>PinnedSpawnHeight.cs</td><td>Keeps large turret enemies above the redesigned arena floor.</td></tr>
+    <tr><td>BuildGame.cs</td><td>Provides a command-line Windows build entry point.</td></tr>
+  </table>
+
+  <h2>12. Scene List</h2>
+  <table>
+    <tr><th>Scene</th><th>Purpose</th></tr>
+    <tr><td>IntroMenu</td><td>Main menu and difficulty selection.</td></tr>
+    <tr><td>MainScene</td><td>Gameplay arena.</td></tr>
+    <tr><td>WinScene</td><td>Victory screen.</td></tr>
+    <tr><td>LoseScene</td><td>Defeat screen.</td></tr>
+  </table>
+
+  <h2>13. Win and Lose Conditions</h2>
+  <p><strong>Win condition:</strong> The player destroys all required enemies.</p>
+  <p><strong>Lose condition:</strong> The player health reaches zero.</p>
+
+  <h2>14. Testing Notes</h2>
+  <p>Script compilation was tested after gameplay and packaging changes. The large turret enemy placement was corrected so it stays above the arena floor. Full Play Mode testing should be done inside the Unity Editor before final submission.</p>
+
+  <h2>15. Future Improvements</h2>
+  <ul>
+    <li>Add unique models or downloaded Unity Asset Store props.</li>
+    <li>Add more weapon skins.</li>
+    <li>Add sound changes for the cyberpunk style.</li>
+    <li>Add a second arena or wave-based mode.</li>
+    <li>Add a scoreboard or timer for replay value.</li>
+  </ul>
+</body>
+</html>
